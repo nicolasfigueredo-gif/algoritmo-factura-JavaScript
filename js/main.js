@@ -13,25 +13,48 @@ function buscar(){
     subtotal = vu * cant
     iva = subtotal * 0.19
     total =  subtotal + iva
+    des = 0
+    total_nuevo = 0
+    porcentaje = ""
 
-    alert("razon social: " + rs +
-        "\n # factura: " + nfac + " fecha: " + fecha +
+    if (total > 50000 && total <= 100000) {
+        porcentaje = "5%"
+        des = total * 0.05
+        total_nuevo = total - des
+    } else if (total > 100000 && total <= 199999) {
+        porcentaje = "10%"
+        des = total * 0.10
+        total_nuevo = total - des
+    } else if (total >= 200000) {
+        porcentaje = "20%"
+        des = total * 0.20
+        total_nuevo = total - des
+    } else {
+        total_nuevo = total
+    }
+
+    alert("Razon social: " + rs +
+        "\n # Factura: " + nfac + " Fecha: " + fecha +
         "\n**********************************************" + 
-        "\n*************Datos del cliente****************" + 
+        "\n*************Datos del cliente***************" + 
         "\n**********************************************" + 
-        "\n identificación: " + id +
-        "\n cliente: " + nom +
-        "\n dirección: " + dir +
-        "\N telefono: " + telf +
+        "\n Identificación: " + id +
+        "\n Cliente: " + nom +
+        "\n Dirección: " + dir +
+        "\n Telefono: " + telf +
         "\n**********************************************" + 
-        "\n*************Datos del producto***************" + 
+        "\n************Datos del producto*************" + 
         "\n**********************************************" + 
-        "\n producto: " + p +
-        "\n cantidad: " + cant + 
+        "\n Producto: " + p +
+        "\n Cantidad: " + cant + 
         "\n Valor unitario: $" + vu +
-        "\n iva: $" + iva + 
-        "\n sub total: $" + subtotal + 
+        "\n Iva: $" + iva + 
+        "\n Sub total: $" + subtotal + 
         "\n**********************************************" + 
-        "\n total: $" + total +
+        "\n Total: $" + total +
+        "\n**********************************************" +
+        "\n Descuento aplicado: " + porcentaje +
+        "\n Valor descontado: " + des +
+        "\n Nuevo total a pagar: $" + total_nuevo +
         "\n**********************************************")
 }
